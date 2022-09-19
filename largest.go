@@ -5,8 +5,9 @@ import (
 	// "golang.org/x/exp/constraints"
 )
 
+// Roll our own Ordering interface
 type MyOrdered interface {
-	~string | ~int | ~float64
+	string | int | float64
 }
 
 // unconstrained template T any
@@ -16,8 +17,8 @@ func printGeneric[T any](slice []T) {
 	}
 }
 
+// Polymorphic func: 'largest'
 func largest[T MyOrdered](slice []T) T {
-	// func largest[T constraints.Ordered](slice []T) T {
 	largest := slice[0]
 	for _, val := range slice {
 		if largest < val {
@@ -48,5 +49,4 @@ func main() {
 	fmt.Printf("Largest number MyInt: %v -> ", largest(slice3))
 	printGeneric(slice3)
 	fmt.Print("\n")
-
 }
