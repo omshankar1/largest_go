@@ -7,7 +7,7 @@ import (
 // Roll our own 'Ordering' interface
 // Define a Type set MyOrdered
 type MyOrdered interface {
-	string | int | float64
+	string | ~int | float64
 }
 
 // unconstrained template T any
